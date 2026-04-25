@@ -17,8 +17,8 @@ const Navbar=() => {
             <div className="">
                 <ul className="flex justify-center gap-5 ">
                     <li> <Link href='/' className={pathname === '/' ? 'text-red-500 font-bold border-b-2 border-red-500' : ''}  >Home</Link> </li>
-                    <li> <Link href='/about' className={pathname === '/' ? 'text-red-500 font-bold border-b-2 border-red-500' : ''} >About</Link> </li>
-                    <li> <Link href='/career' className={pathname === '/' ? 'text-red-500 font-bold border-b-2 border-red-500' : ''} >Career</Link> </li>
+                    <li> <Link href='/about' className={pathname === '/about' ? 'text-red-500 font-bold border-b-2 border-red-500' : ''} >About</Link> </li>
+                    <li> <Link href='/career' className={pathname === '/career' ? 'text-red-500 font-bold border-b-2 border-red-500' : ''} >Career</Link> </li>
                 </ul>
             </div>
             <div className="flex justify-center gap-4">
