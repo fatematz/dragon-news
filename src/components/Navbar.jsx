@@ -9,7 +9,7 @@ const Navbar=() => {
         const pathname = usePathname();
 
     return (
-        <div className="mt-[30px]">
+        <div className="mt-[30px] mt-[30px]">
         <div className="flex justify-between items-center container ">
             <div className="">
                 

@@ -1,3 +1,5 @@
+import LeftSideBar from "@/components/homepage/news/LeftSidebar";
+import RightSideBar from "@/components/RightSidebar";
 import { lightFormat } from "date-fns";
 
 async function getCategories(){
@@ -11,18 +13,10 @@ export default async function Home() {
   console.log(categories.news_category, "category");
 
   return (
-    <div className="container grid grid-cols-12 gap-4">
+    <div className="container grid grid-cols-12 gap-4 ">
 
-      <div className="bg-red-500 col-span-3">
-    All category
-
-    <ul className="flex flex-col gap-[20px]">
-    {
-      categories.news_category.map(category => {
-        return <li key={category.category_id}> {category.category_name} </li>
-      })
-    }
-    </ul >
+      <div className=" col-span-3">
+       <LeftSideBar categories={categories} activeId={"04"}/>
       </div>
 
       <div className="bg-gray-500 col-span-6">
@@ -30,7 +24,7 @@ export default async function Home() {
       </div>
 
       <div className="bg-green-300 col-span-3">
-      <h1>Right-side-bar</h1>
+      <RightSideBar/>
       </div>
       </div>
   );
