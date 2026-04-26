@@ -23,7 +23,8 @@ const Navbar=() => {
             </div>
             <div className="flex justify-center gap-4">
                 <Image src={userAvatar} alt="avatar img" />
-                <Link className="btn bg-gray-600 text-white" href="/login">Login</Link>
+                <Link  className="btn bg-gray-600 text-white" href="/login">Login</Link>
+                <Link className="btn bg-gray-600 text-white" href="/register">register</Link>
             </div>
         </div>
         </div>
