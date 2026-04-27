@@ -1,4 +1,5 @@
 'use client'
+import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 
@@ -10,13 +11,35 @@ const LoginPage = () => {
     formState : {errors},
      } = useForm()
 
-     console.log(errors, "errors")
+    //  console.log(errors, "errors")
 
-    const handleLoginFun = (data) => {
+
+    const handleRegisterFun = async (data) => {
 
         console.log(data, "data")
-        // e.preventDefault();
+        const {email, name, photo, password} = data;
+        // console.log(photo, name);
 
+        const {  data: res, error} = await authClient.signUp.email({
+    name: name, 
+    email: email, // required
+    password: password, // required
+    image: photo,
+    callbackURL: "/",
+});
+
+console.log(res, error);
+if(error){
+    alert(error.message)
+}
+
+if(res) {
+    alert("Signup Successful")
+}
+
+
+
+        // e.preventDefault();
         // const email =e.target.email.value;
         // const password =e.target.password.value;
         // console.log(email, password)
@@ -26,13 +49,13 @@ const LoginPage = () => {
             <div className="rounded-xl p-4 bg-white max-w-[752px] mx-auto">
             <h1 className="text-center font-bold text-3xl border-b py-8 mx-15">Register your account</h1>
 
-            <form className="ml-52 my-6" onSubmit={handleSubmit (handleLoginFun)}>
+            <form className="ml-52 my-6" onSubmit={handleSubmit (handleRegisterFun)}>
 
 
 
  <fieldset className="fieldset">
   <legend className="font-semibold text-[20px] fieldset-legend">Your Name</legend>
-  <input type="name" {...register("name" , {required: "Name field is required" })} className="input" placeholder="Enter your Name" />
+  <input type="text" {...register("name" , {required: "Name field is required" })} className="input" placeholder="Enter your Name" />
 {errors.name && <p className="text-red-500"> {errors.name.message} </p>}
 </fieldset>
 
