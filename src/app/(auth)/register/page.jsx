@@ -2,8 +2,10 @@
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
+     const router = useRouter();
 
      const {
     register,
@@ -11,7 +13,7 @@ const LoginPage = () => {
     formState : {errors},
      } = useForm()
 
-    //  console.log(errors, "errors")
+     console.log(errors, "errors")
 
 
     const handleRegisterFun = async (data) => {
@@ -25,7 +27,7 @@ const LoginPage = () => {
     email: email, // required
     password: password, // required
     image: photo,
-    callbackURL: "/",
+    // callbackURL: "/",
 });
 
 console.log(res, error);
@@ -34,7 +36,8 @@ if(error){
 }
 
 if(res) {
-    alert("Signup Successful")
+    // alert("Signup Successful");
+     router.push("/");
 }
 
 
@@ -61,8 +64,8 @@ if(res) {
 
  <fieldset className="fieldset">
   <legend className="font-semibold text-[20px] fieldset-legend">Photo URL</legend>
-  <input type="photoUrl" {...register("photoUrl" , {required: "Photo Url field is required" })} className="input" placeholder="Enter your Photo Url" />
-{errors.photoUrl && <p className="text-red-500"> {errors.photoUrl.message} </p>}
+  <input type="url" {...register("photo" , {required: "Photo Url field is required" })} className="input" placeholder="Enter your Photo Url" />
+{errors.photo  && <p className="text-red-500"> {errors.photo.message} </p>}
 </fieldset>
 
                  <fieldset className="fieldset">
